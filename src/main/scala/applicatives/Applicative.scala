@@ -1,0 +1,6 @@
+package applicatives
+
+
+class Applicative {
+
+}
