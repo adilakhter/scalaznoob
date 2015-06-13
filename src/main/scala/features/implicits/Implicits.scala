@@ -1,7 +1,7 @@
 package features.implicits
 
 // Example 1: TypeClass
-object TypeClassApp {
+object TypeClass{
 
   def lessThan[A: Ordering](a: A, b: A): Boolean = implicitly[Ordering[A]].lt(a, b)
 
@@ -19,7 +19,7 @@ object TypeClassApp {
 
 
 // Example 2: Class Extension
-object ClassExtensionApp{
+object ClassExtension{
   implicit class HexableString(s: String) {
     def asHexVal: Seq[String] = s map { c =>
       f"0x$c%02x"
@@ -28,5 +28,37 @@ object ClassExtensionApp{
 
   // Pimp
   val haxVal = "implicit".asHexVal
-
 }
+
+
+object InternalDsls{
+  implicit class Recoverable[A](f: =>A){
+    def recover(g: Throwable => A): A =
+      try{
+        f
+      } catch {
+        case t: Throwable => g(t)
+      }
+  }
+
+  def thisThrows(): Int = throw new Exception("Argh!")
+
+  val stable = thisThrows() recover { t =>
+    if(t.getMessage == "Argh!") {
+      10
+    }else{
+      5
+    }
+  }
+}
+
+
+
+
+
+/**
+ * Other Usages:
+ * - Decluttering code
+ *
+ *
+ */
