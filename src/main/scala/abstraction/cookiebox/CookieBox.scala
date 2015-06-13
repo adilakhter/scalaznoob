@@ -27,10 +27,10 @@ object CookieBoxApp {
   def howManyCookies(gp: CookieBox, gm: CookieBox) =
       CookieBox(gp.eat(gp.count).count + gm.eat(gm.count).count)
 
-  import CookieBoxApp._
-  import CookieBox._
-
   def howMany[A: MMonoid](gm: A, gp: A): A =
+    implicitly[MMonoid[A]].append(gm,gp)
+
+  def howMany2[A: MMonoid](gm: A, gp: A): A =
     implicitly[MMonoid[A]].append(gm,gp)
 }
 
