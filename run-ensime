@@ -1,0 +1,3 @@
+echo "Running ENSIME from: "+$ENSIME_SUBLIME
+
+"$ENSIME_SUBLIME/serverStart.sh" .ensime
