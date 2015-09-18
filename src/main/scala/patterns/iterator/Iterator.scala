@@ -52,6 +52,18 @@ object IteratorPattern {
     def point[A](a: ⇒ A): F[A] = pointed.point(a)
     def apply[A, B](f: F[A ⇒ B]): F[A] ⇒ F[B] = applic.applic(f)
   }
+
+  // Gibbons and Oliveira argue that any kind of for loop can be represented
+  // as the following traverse operation:
+
+  trait Traversable[T[_]]{
+    def traverse[F[_]: Applicative, A, B](f: A ⇒ F[B]): T[A] ⇒ F[T[B]]
+  }
+
+  // If a container/structure of type T has this `traverse` function using `Applicative`
+  // F, then we could do whatever we do with a for loop on it.
+  //
+  // Examples of Traversable trait: BinaryTreeAplic below
 }
 
 object ApplicEx1 extends App with Applic[Option]{
@@ -96,4 +108,11 @@ object ListApplicative extends Applicative[List]{
     // another way to implement is following:
     // for { a ← l; func ← f} yield func(a)
   }
+
+  // List is a monoid.
+  // When we do a for look, we taka a structure containing some elements and we traverse it to
+  // - return the same structure other elemens
+  // - a value computed from the structure of elements
+  // - some combination of above
+
 }
