@@ -66,7 +66,7 @@ object IteratorPattern {
   // Examples of Traversable trait: BinaryTreeAplic below
 }
 
-object ApplicEx1 extends App with Applic[Option]{
+object Applics extends App with Applic[Option]{
   class Market
   class Fruit
 
@@ -79,15 +79,14 @@ object ApplicEx1 extends App with Applic[Option]{
   // Grow function possibly returns a Fruit
   def grow:  Option[Fruit] = ???
 
-  def applic[Fruit, Double] = ???
-
   val pricingFunction = pricer(market)
   val fruit = grow
 
+  // pricer(new Market())
+  override def applic[Fruit, Double](f: Option[Fruit => Double]): Option[Fruit] => Option[Double] = ???
+
   // using applic intance we can compute the price of a fruit
   val price: Option[Double] = applic(pricingFunction).apply(fruit)
-
-  // pricer(new Market())
 }
 
 object ListApplicative extends Applicative[List]{
@@ -116,3 +115,4 @@ object ListApplicative extends Applicative[List]{
   // - some combination of above
 
 }
+
