@@ -1,4 +1,5 @@
 
+
 object PeriodPoc extends App {
   sealed trait Period
   class Month extends Period
@@ -15,15 +16,15 @@ object PeriodPoc extends App {
     override def toString = s"€ $value"
   }
 
-
-  implicit class  PimpedInt(value: Int){
-    def per[P<:Period](period: P) = Per(Amount(value), period)
-  }
-
+  implicit class PimpedInt(value: Int) {
+    def per[P <: Period](period: P) = Per(Amount(value), period)
+  } 
 
   val y: Per[Amount, Year] = 1000 per year
   val z: Per[Amount, Month] = 20000 per month
 
+  val l = List(1, 3, 4)
+  l.flatMap(i => List(i + 1, i - 1))
 
   println(y)
   println(z)
