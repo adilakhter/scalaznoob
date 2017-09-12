@@ -8,8 +8,8 @@ class ApplicativeTests extends Specification{
     "Applicative" should {
       "Sort a random list of integers" in {
         1 must be equalTo(1)
-
-      }
+        	
+    	}
     }
 
 }

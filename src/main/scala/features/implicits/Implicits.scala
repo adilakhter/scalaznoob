@@ -13,8 +13,6 @@ object TypeClass{
   val b = 12
 
   val lesser = if(lessThan(a, b)) a else b
-
-
 }
 
 
@@ -29,7 +27,6 @@ object ClassExtension{
   // Pimp
   val haxVal = "implicit".asHexVal
 }
-
 
 object InternalDsls{
   implicit class Recoverable[A](f: =>A){

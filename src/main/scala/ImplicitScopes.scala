@@ -1,0 +1,5 @@
+object ImplicitScopes extends App {
+	
+
+}
+
