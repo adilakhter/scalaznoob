@@ -7,7 +7,7 @@ import scalaz._
 import Scalaz._
 import scala.util.Try
 
-object KeyGeneratorApp extends App {
+object KeyGenApp extends App {
 
   val (publicKey, privateKey) = {
     val generator: KeyPairGenerator = KeyPairGenerator.getInstance("RSA")
