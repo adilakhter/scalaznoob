@@ -3,10 +3,6 @@ package examples
 import java.security.{KeyPairGenerator, SecureRandom}
 import java.util.Base64
 
-import scalaz._
-import Scalaz._
-import scala.util.Try
-
 object KeyGenApp extends App {
 
   val (publicKey, privateKey) = {

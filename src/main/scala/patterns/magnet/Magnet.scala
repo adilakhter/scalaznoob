@@ -57,5 +57,14 @@ object MagnetPatternEx1 {
 //  res4: Int = 1
 }
 
+object MagnetPatternApp extends App {
+
+  import patterns.magnet.MagnetPatternEx1._
+  import akka.util.ByteString
+
+  println(set ("key-1", ByteString("test")))
+  println(set ("key-2", "test"))
+
+}
 
 
